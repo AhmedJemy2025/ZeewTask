@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion 30
+    
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation "androidx.core:core-ktx:$coreKTXVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    api "com.squareup.okhttp3:okhttp:4.9.0"
+    api "com.squareup.okhttp3:logging-interceptor:3.14.2"
+
+
+    // dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    // dagger android
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion" // if you use the support libraries
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1"
+//    implementation("io.reactivex.rxjava3:rxkotlin:3.x.y")
+    implementation 'com.github.ReactiveX:RxKotlin:3.x-SNAPSHOT'
+
+//    implementation "com.squareup.retrofit2:converter-moshi:2.5.1"
+
+    implementation('com.github.bumptech.glide:glide:4.9.0')
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    kapt 'com.android.databinding:compiler:3.0.1'
+
+
+}
+repositories {
+    mavenCentral()
+}
